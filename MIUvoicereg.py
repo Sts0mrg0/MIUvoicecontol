@@ -1,7 +1,5 @@
-
 import requests
 import speech_recognition as sr
-
 
 def recognize_speech_from_mic(recognizer, microphone):
 
@@ -40,7 +38,6 @@ def recognize_speech_from_mic(recognizer, microphone):
 
     return response
    
-
 while True:
 
     # create recognizer and mic instances
@@ -51,17 +48,9 @@ while True:
     response = recognize_speech_from_mic(recognizer, microphone)
     print("{}".format(response["transcription"]))
     try:
-        brb = response["transcription"].lower() == ("be right back").lower()
-        clearchat = response["transcription"].lower() == ("clear chat").lower()
-        image = response["transcription"].lower() == ("image").lower()
-        if brb:
-            print("showing brb scene....")
-            requests.post('http://localhost:8911/api/commands/{adcd1b9d-3b46-431e-8502-b36e061d017e}')
-        elif clearchat:
-            print("clearing chat....")
-            requests.post('http://localhost:8911/api/commands/{e7ebffc8-33f1-465c-9e6e-46e964b9bf1a}')
-        elif image:
-            print("showing image....")
-            requests.post('http://localhost:8911/api/commands/{1882efd0-d9bd-49ab-863e-00cd00700975}')
+        yourcommandnamehere = response["transcription"].lower() == ("WHAT YOU WANT IT TO SAY").lower()
+        if yourcommandnamehere:
+            print("SOMETHING")
+            requests.post('YOUR MIU COMMAND ID HERE}')
     except:
         print ('no input detected')
